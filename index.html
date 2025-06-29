@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>AI Resume Generator</h1>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                AI is generating suggestions...
+            </div>
+
+            <form id="resumeForm">
+                <!-- Personal Information -->
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required placeholder="john.doe@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="City, State">
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn</label>
+                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/johndoe">
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="form-group">
+                    <label for="jobTitle">Target Job Title</label>
+                    <input type="text" id="jobTitle" placeholder="Software Engineer">
+                </div>
+
+                <div class="ai-suggestions" id="summaryAI">
+                    <h3>🤖 AI-Generated Professional Summary Suggestions</h3>
+                    <div id="summarySuggestions"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="summary">Professional Summary</label>
+                    <textarea id="summary" placeholder="Write a brief professional summary or use AI suggestions above..."></textarea>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="form-group">
+                    <label>Work Experience</label>
+                    <div id="experienceContainer">
+                        <div class="dynamic-section">
+                            <div class="section-header">
+                                <strong>Experience #1</strong>
+                            </div>
+                            <input type="text" placeholder="Job Title" class="exp-title">
+                            <input type="text" placeholder="Company Name" class="exp-company">
+                            <input type="text" placeholder="Duration (e.g., Jan 2020 - Present)" class="exp-duration">
+                            <textarea placeholder="Job responsibilities and achievements..." class="exp-description"></textarea>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="ResumeGenerator.addExperience()">+ Add Experience</button>
+                </div>
+
+                <!-- Education Section -->
+                <div class="form-group">
+                    <label>Education</label>
+                    <div id="educationContainer">
+                        <div class="dynamic-section">
+                            <div class="section-header">
+                                <strong>Education #1</strong>
+                            </div>
+                            <input type="text" placeholder="Degree" class="edu-degree">
+                            <input type="text" placeholder="Institution" class="edu-school">
+                            <input type="text" placeholder="Year (e.g., 2020)" class="edu-year">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="ResumeGenerator.addEducation()">+ Add Education</button>
+                </div>
+
+                <!-- Skills -->
+                <div class="form-group">
+                    <label for="skills">Skills (comma-separated)</label>
+                    <textarea id="skills" placeholder="JavaScript, Python, React, Node.js, SQL, Git..."></textarea>
+                </div>
+
+                <!-- Generate Buttons -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="button" class="btn" onclick="ResumeGenerator.generateResume()">🚀 Generate Resume</button>
+                    <button type="button" class="btn btn-secondary" onclick="ResumeGenerator.downloadPDF()">📄 Download PDF</button>
+                    <button type="button" class="btn" onclick="AIEngine.generateSuggestions()">🤖 Get AI Suggestions</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="preview-section">
+            <div class="resume-preview" id="resumePreview">
+                <div class="resume-header">
+                    <div class="resume-name">Your Name Here</div>
+                    <div class="resume-contact">Email • Phone • Location</div>
+                    <div class="resume-contact">LinkedIn</div>
+                </div>
+
+                <div class="resume-section">
+                    <div class="resume-section-title">Professional Summary</div>
+                    <p>Your professional summary will appear here...</p>
+                </div>
+
+                <div class="resume-section">
+                    <div class="resume-section-title">Work Experience</div>
+                    <div class="resume-item">
+                        <div class="resume-item-title">Job Title</div>
+                        <div class="resume-item-subtitle">Company Name | Duration</div>
+                        <div class="resume-item-description">Your work experience details will appear here...</div>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <div class="resume-section-title">Education</div>
+                    <div class="resume-item">
+                        <div class="resume-item-title">Degree</div>
+                        <div class="resume-item-subtitle">Institution | Year</div>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <div class="resume-section-title">Skills</div>
+                    <p>Your skills will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ai-engine.js"></script>
+    <script src="js/resume-generator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
